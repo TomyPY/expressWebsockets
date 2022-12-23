@@ -1,0 +1,97 @@
+<%- include('partials/header'); %>
+
+    <div class="form-container">
+
+        <div class="title-form-container">
+            <h1 class="title">Upload your product!</h1>
+        </div>
+        
+        <div class="form-input-container">
+
+            <strong class="error"></strong>
+
+            <div class="form">
+
+                <div class="input">
+                    <input type="text" name="name" placeholder="Product" class="name-input">
+                </div>
+
+                <div class="input">
+                    <input type="number" name="price" placeholder="Price" class="price-input">
+                </div>
+
+                <div class="input">
+                    <input type="text" name="thumbnail" placeholder="Thumbnail" class="thumbnail-input">
+                </div>
+                
+                <button class="btn-send">Send</button>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product-list-wrapper">
+
+        <div class="product-title-container">
+            <h2 class="title-list">Products list:</h2>
+        </div>
+
+        <div class="product-list">
+
+            <div class="columns-container">
+
+                <div class="column"><h3>Name</h3></div>
+                <div class="column"><h3>Price</h3></div>
+                <div class="column"><h3>Thumbnail</h3></div>
+
+            </div>
+
+            <% products.forEach(function(product){ %>
+                <div class="product-container">
+                    <div class="name c"><h3><%= product.name %></h3></div>
+                    <div class="price c"><h3><%= product.price %></h3></div>
+                    <div class="image c"><img src="<%= product.thumbnail %>" onerror="this.onerror=null;this.src='https://icon-library.com/images/icon-picture/icon-picture-5.jpg';" alt=""></div>
+                </div>
+            <% }); %>
+        </div>
+            
+    </div>
+    
+    <div class="chat-container">
+
+        <h2 class="chat-title">Centro de mensajes</h2>
+
+        <div class="chat-log">
+
+            <% messages.forEach(function(message){ %>
+                <div class="message-container">
+
+                    <h4 class="email inp"><%= message.email %></h4>
+                    <h4 class="datetime inp">[<%= message.datetime %>]:</h4>
+                    <h4 class="message inp"><%= message.message %></h4>
+    
+                </div>
+            <% }); %>
+
+        </div>
+
+        <div class="send-message-container">
+
+            <strong class="errorMessage"></strong>
+
+            <div class="input-send">
+                <input type="email" name="email" placeholder="email" class="email-input">
+            </div>
+
+            <div class="input-send">
+                <input type="text" name="message" placeholder="message" class="message-input">
+            </div>
+            
+
+            <button class="send-message-button btn-send">Send</button>
+
+        </div>
+
+    </div>
+<%- include('partials/footer'); %>
